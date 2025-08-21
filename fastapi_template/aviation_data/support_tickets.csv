@@ -1,0 +1,7 @@
+Ticket Number,Category,Priority,AOG Emergency,Aircraft Registration,Customer Email,Subject,Created Date,Status
+TICKET-001,AOG,CRITICAL,YES,N789XY,ops@americanairlines.com,URGENT AOG - Aircraft N789XY grounded at JFK Terminal 8,2025-08-18,PROCESSED
+TICKET-002,AOG,CRITICAL,YES,N123AB,maintenance@deltaair.com,EMERGENCY - N123AB hydraulic system complete failure,2025-08-18,PROCESSED
+TICKET-003,AOG,CRITICAL,YES,N456CD,scheduling@unitedairlines.com,Scheduled maintenance request for N456CD - 100 hour inspection,2025-08-18,PROCESSED
+TICKET-004,MAINTENANCE,NORMAL,NO,CHARGES,billing@southwestair.com,Invoice inquiry regarding maintenance charges #INV-SW-12345,2025-08-18,PROCESSED
+TICKET-005,MAINTENANCE,NORMAL,NO,N999EF,parts@jetblue.com,Parts delivery confirmation - Hydraulic components for N999EF,2025-08-18,PROCESSED
+TICKET-006,AOG,CRITICAL,YES,N777AS,emergency@alaskaair.com,CRITICAL AOG - N777AS tire blowout on landing at SEA,2025-08-18,PROCESSED

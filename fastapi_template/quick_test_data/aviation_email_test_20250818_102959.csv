@@ -1,0 +1,6 @@
+email_num,sender,subject,category,priority,is_aog,aircraft,confidence
+1,dispatch@americanairlines.com,URGENT AOG - Aircraft N789XY engine failure at DFW,AOG,CRITICAL,True,N789XY,0.95
+2,maintenance@united.com,Scheduled A-check for N456CD next week,MAINTENANCE,NORMAL,False,CHECK,0.85
+3,billing@delta.com,Invoice #DL-2024-1234 for recent maintenance work,MAINTENANCE,NORMAL,False,N/A,0.85
+4,ops@southwest.com,CRITICAL - N999SW hydraulic failure at MDW,AOG,CRITICAL,True,N999SW,0.95
+5,parts@jetblue.com,Parts delivery for N123JB - Engine components,MAINTENANCE,NORMAL,False,N123JB,0.85

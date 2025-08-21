@@ -1,0 +1,111 @@
+{
+  "version": 1,
+  "description": "Embassy Aviation escalation contacts configuration",
+  "named_contacts": {
+    "ops_manager": {
+      "name": "Operations Manager",
+      "email": "ops-manager@embassy-aviation.com",
+      "phone": "+1-555-0101",
+      "role": "operations_manager",
+      "department": "operations"
+    },
+    "maintenance_lead": {
+      "name": "Maintenance Lead",
+      "email": "maintenance-lead@embassy-aviation.com",
+      "phone": "+1-555-0102", 
+      "role": "maintenance_lead",
+      "department": "maintenance"
+    },
+    "customer_service": {
+      "name": "Customer Service Manager",
+      "email": "service@embassy-aviation.com",
+      "phone": "+1-555-0103",
+      "role": "customer_service",
+      "department": "customer_service"
+    },
+    "director": {
+      "name": "Director of Operations",
+      "email": "director@embassy-aviation.com",
+      "phone": "+1-555-0104",
+      "role": "director",
+      "department": "executive"
+    },
+    "duty_engineer": {
+      "name": "Duty Engineer",
+      "email": "duty-engineer@embassy-aviation.com",
+      "phone": "+1-555-0105",
+      "role": "duty_engineer", 
+      "department": "engineering"
+    }
+  },
+  "categories": {
+    "aog": {
+      "description": "Aircraft on Ground - Critical situations requiring immediate attention",
+      "contacts": {
+        "critical": ["ops_manager", "maintenance_lead", "duty_engineer", "director"],
+        "default": ["ops_manager", "maintenance_lead", "duty_engineer"]
+      },
+      "escalation_interval_minutes": 15,
+      "max_escalation_steps": 3
+    },
+    "service": {
+      "description": "General service requests and maintenance inquiries",
+      "contacts": {
+        "high": ["maintenance_lead", "ops_manager"],
+        "normal": ["maintenance_lead"],
+        "default": ["maintenance_lead"]
+      },
+      "escalation_interval_minutes": 60,
+      "max_escalation_steps": 2
+    },
+    "maintenance": {
+      "description": "Scheduled maintenance and inspection requests",
+      "contacts": {
+        "high": ["maintenance_lead", "duty_engineer"],
+        "normal": ["maintenance_lead"],
+        "default": ["maintenance_lead"]
+      },
+      "escalation_interval_minutes": 60,
+      "max_escalation_steps": 2
+    },
+    "general": {
+      "description": "General inquiries and non-urgent requests",
+      "contacts": {
+        "normal": ["customer_service"],
+        "low": ["customer_service"],
+        "default": ["customer_service"]
+      },
+      "escalation_interval_minutes": 240,
+      "max_escalation_steps": 1
+    },
+    "invoice": {
+      "description": "Billing, invoicing, and payment related inquiries",
+      "contacts": {
+        "normal": ["customer_service"],
+        "default": ["customer_service"]
+      },
+      "escalation_interval_minutes": 240,
+      "max_escalation_steps": 1
+    }
+  },
+  "emergency": ["ops_manager", "director"],
+  "global": {
+    "default": ["customer_service"],
+    "fallback": "ops_manager"
+  },
+  "business_hours": {
+    "timezone": "America/New_York",
+    "weekdays": {
+      "start": "08:00",
+      "end": "18:00"
+    },
+    "weekends": {
+      "start": "09:00", 
+      "end": "17:00"
+    }
+  },
+  "after_hours": {
+    "contacts": ["ops_manager", "duty_engineer"],
+    "critical_only": false
+  }
+}

@@ -1,0 +1,185 @@
+version: 1
+
+# Aviation-specific keywords for urgent classification
+aviation_keywords:
+  critical:
+    - "aog"
+    - "aircraft on ground"
+    - "grounded"
+    - "emergency"
+    - "critical"
+    - "urgent"
+    - "immediate"
+    - "stranded"
+    - "stuck"
+    - "breakdown"
+  
+  urgent:
+    - "notam"
+    - "delay"
+    - "diverted"
+    - "mel"
+    - "weather"
+    - "maintenance"
+    - "repair"
+    - "inspection"
+    - "service"
+    - "component"
+    - "engine"
+    - "hydraulic"
+    - "electrical"
+    - "avionics"
+
+# Classification categories with rules
+categories:
+  - name: "AOG"
+    priority: "critical"
+    description: "Aircraft on Ground - Critical situations"
+    conditions:
+      subject_contains:
+        - "aog"
+        - "aircraft on ground" 
+        - "grounded"
+        - "emergency"
+        - "critical"
+        - "stranded"
+        - "breakdown"
+      body_contains:
+        - "aircraft"
+        - "grounded"
+        - "emergency"
+        - "critical"
+        - "immediate"
+        - "urgent"
+        - "aog"
+        - "breakdown"
+    actions:
+      escalation_interval: 15
+      channels: ["email", "sms"]
+      notify_immediately: true
+
+  - name: "Service"
+    priority: "high"
+    description: "General service requests"
+    conditions:
+      subject_contains:
+        - "service"
+        - "maintenance"
+        - "repair"
+        - "inspection" 
+        - "check"
+        - "service request"
+      body_contains:
+        - "service"
+        - "maintenance"
+        - "repair"
+        - "fix"
+        - "inspection"
+        - "check"
+        - "component"
+      sender_domains:
+        - "maintenance.com"
+        - "service.com"
+        - "mro.com"
+    actions:
+      escalation_interval: 60
+      channels: ["email", "sms"]
+
+  - name: "Maintenance"
+    priority: "high"
+    description: "Maintenance-specific requests"
+    conditions:
+      subject_contains:
+        - "maintenance"
+        - "mx"
+        - "engine"
+        - "component"
+        - "part"
+        - "hydraulic"
+        - "electrical"
+        - "avionics"
+      body_contains:
+        - "maintenance"
+        - "engine"
+        - "hydraulic"
+        - "electrical"
+        - "avionics"
+        - "component"
+        - "part"
+        - "system"
+      has_attachments: true
+    actions:
+      escalation_interval: 60
+      channels: ["email", "sms"]
+
+  - name: "Invoice"
+    priority: "normal"
+    description: "Billing and invoice related inquiries"
+    conditions:
+      subject_contains:
+        - "invoice"
+        - "billing"
+        - "payment"
+        - "bill"
+        - "charge"
+        - "cost"
+      body_contains:
+        - "invoice"
+        - "bill"
+        - "payment"
+        - "charge"
+        - "cost"
+        - "billing"
+        - "amount"
+    actions:
+      escalation_interval: 240
+      channels: ["email"]
+
+  - name: "General"
+    priority: "normal" 
+    description: "General inquiries and questions"
+    conditions:
+      subject_contains:
+        - "inquiry"
+        - "question"
+        - "information"
+        - "help"
+        - "support"
+        - "general"
+      body_contains:
+        - "question"
+        - "information"
+        - "help"
+        - "support"
+        - "inquiry"
+    actions:
+      escalation_interval: 240
+      channels: ["email"]
+
+# Fallback rule for unmatched emails
+fallback:
+  category: "General"
+  priority: "normal"
+  actions:
+    escalation_interval: 240
+    channels: ["email"]
+
+# Aircraft registration patterns for extraction
+aircraft_patterns:
+  - "\\b[A-Z]-[A-Z]{4}\\b"      # International format
+  - "\\b[A-Z]{1,2}-?[A-Z0-9]{3,5}\\b"  # Various formats
+  - "\\bN\\d{1,5}[A-Z]{0,2}\\b"  # US format
+  - "\\b[A-Z]{2}-[A-Z0-9]{3,4}\\b"  # European format
+
+# Priority override keywords
+priority_escalation:
+  to_critical:
+    - "emergency"
+    - "aog"
+    - "critical"
+    - "immediate"
+  to_high:
+    - "urgent"
+    - "priority"
+    - "important" 
+    - "asap"
