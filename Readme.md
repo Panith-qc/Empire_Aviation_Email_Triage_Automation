@@ -1,5 +1,5 @@
 # Project Summary
-The Empire Aviation Mailbot is an AI-driven email automation system designed for Empire Aviation USA. This project automates the processing of aviation-related service requests, enhancing communication efficiency and response times through email and SMS notifications. By integrating with various email accounts (Gmail, Outlook, IMAP), the Mailbot improves operational safety and reduces costs associated with aviation inquiries.
+The Empire Aviation Mailbot is an AI-driven email automation system designed for Empire Aviation USA. This project automates the processing of aviation-related service requests, enhancing communication efficiency and response times through email and SMS notifications. By integrating with various email accounts (Outlook, IMAP), the Mailbot improves operational safety and reduces costs associated with aviation inquiries.
 
 # Project Module Description
 The system consists of several functional modules:
